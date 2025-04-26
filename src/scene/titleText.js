@@ -5,7 +5,7 @@ import { FontLoader } from "three/examples/jsm/Addons.js";
 
 const loader = new FontLoader();
 
-loader.load("/src/assets/fonts/floralFont.json", function (font) {
+loader.load("/src/assets/fonts/BoldFloral.json", function (font) {
   console.log(font);
   const textGeometry = new TextGeometry("Fluora", {
     font: font,
@@ -22,6 +22,6 @@ loader.load("/src/assets/fonts/floralFont.json", function (font) {
 
   const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
-  textMesh.position.set(-1.85, 0, -2);
+  textMesh.position.set(-2.4, 0, -7);
   scene.add(textMesh);
 });
