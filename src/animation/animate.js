@@ -1,24 +1,25 @@
-import controls from "../controls/orbitControls.js";
 import { renderer, scene, camera } from "../scene/createScene.js";
-import { planeOne } from "../scene/imageLoader.js";
+import { moveCamera } from "../main.js";
 import { animateLeaves } from "../scene/stars.js";
+import { planeOne, planeTwo } from "../scene/imageLoader.js";
 
-let time = 0;
-const swaySpeed = 0.0025; // Controls how fast it sways
-const swayAmount = 0.05; // Controls how much it sways (keep small for subtle effect)
+// Collect all planes you want to sway
+const swayingPlanes = [planeOne, planeTwo];
 
 function animate() {
   requestAnimationFrame(animate);
-  // controls.update(); // Uncomment if using controls
-  animateLeaves(); // Call the function to animate leaves
 
-  if (planeOne) {
-    time += swaySpeed;
-    planeOne.rotation.z = Math.sin(time) * swayAmount;
-    planeOne.position.x = 3.64 + Math.sin(time * 1.5) * swayAmount * 0.5;
-    planeOne.position.y = -6.56 + Math.cos(time * 2) * swayAmount * 0.5;
-  }
+  const time = Date.now() * 0.001; // seconds
 
+  // Animate swaying for all planes
+  swayingPlanes.forEach((plane, index) => {
+    if (!plane) return; // in case a plane isn't loaded yet
+    plane.rotation.z = Math.sin(time * (0.5 + index * 0.1)) * 0.05;
+    plane.rotation.x = Math.sin(time * (0.3 + index * 0.1)) * 0.015;
+  });
+
+  moveCamera(); // Move camera based on scroll progress
+  animateLeaves(); // Animate the floating leaves
   renderer.render(scene, camera);
 }
 

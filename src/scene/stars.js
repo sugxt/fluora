@@ -5,38 +5,36 @@ import { scene } from "./createScene.js";
 const leaves = [];
 
 function addStar() {
-
   const leafShape = new THREE.Shape();
-
-  // Define the leaf shape path (a simple ellipse with a pointed tip)
-  leafShape.moveTo(0, 0); // Start at the center of the leaf
-
-  // Create a simple elliptical path for the leaf
-  leafShape.quadraticCurveTo(5, 10, 0, 15); // Right side curve (pointing to top)
-  leafShape.quadraticCurveTo(-5, 10, 0, 0); // Left side curve (pointing to bottom)
+  leafShape.moveTo(0, 0);
+  leafShape.quadraticCurveTo(5, 10, 0, 15);
+  leafShape.quadraticCurveTo(-5, 10, 0, 0);
 
   const leafGeometry = new THREE.ShapeGeometry(leafShape);
 
-  // Create a white material for the leaf
   const leafMaterial = new THREE.MeshStandardMaterial({
-    color: 0xffffff, // Dark pink (like DarkMagenta)
-    emissive: 0xffb8e0, // Emit same dark pink light
-    emissiveIntensity: 1, // Increase brightness if needed
+    color: 0xffffff,
+    emissive: 0xffb8e0,
+    emissiveIntensity: 1,
     metalness: 0.3,
     roughness: 0.4,
   });
 
-  // Create the mesh using the geometry and material
   const leafMesh = new THREE.Mesh(leafGeometry, leafMaterial);
 
-  const [x, y, z] = Array(3)
-    .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(200));
-  leafMesh.scale.set(0.3, 0.3, 0.3); // Scale the leaf mesh to make it smaller
-  leafMesh.position.set(x, y, z);
-  leafMesh.rotation.z = Math.random() * Math.PI; // Random rotation
+  // Spherical placement
+  const radius = 80 + Math.random() * 120;
+  const theta = Math.random() * 2 * Math.PI;
+  const phi = Math.acos(2 * Math.random() - 1);
 
-  // Add random rotation speeds for each axis
+  const x = radius * Math.sin(phi) * Math.cos(theta);
+  const y = radius * Math.sin(phi) * Math.sin(theta);
+  const z = radius * Math.cos(phi);
+
+  leafMesh.scale.set(0.3, 0.3, 0.3);
+  leafMesh.position.set(x, y, z);
+  leafMesh.rotation.z = Math.random() * Math.PI;
+
   leafMesh.userData = {
     rotationSpeed: {
       x: THREE.MathUtils.randFloatSpread(0.005),
@@ -46,11 +44,11 @@ function addStar() {
   };
 
   scene.add(leafMesh);
-  leaves.push(leafMesh); // Store the leaf for animation
+  leaves.push(leafMesh);
 }
 
 // Create the leaves
-Array(200).fill().forEach(addStar);
+Array(450).fill().forEach(addStar);
 
 // Animation function to be called in your animation loop
 export function animateLeaves() {
