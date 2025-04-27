@@ -57,6 +57,7 @@ p {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  gap: 80px
 }
 
 .art-title{
@@ -64,9 +65,40 @@ p {
   color: #df6da8;
 }
 
+.poem-block {
+  font-size: 18px;
+  font-weight: 400;
+  color: #91416a;
+}
+
+blockquote {
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #91416a;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote:after {
+  color: #91416a;
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
 h2 {
   padding: 0;
   margin: 0;
-  font-size: medium;
-  color: #eb87ba;
+  font-size: large;
+  color: #ec93c1;
 }

@@ -1,20 +1,26 @@
 import "./style.css";
 import { scene, camera, renderer } from "./scene/createScene.js";
 import "./scene/lighting.js";
-// import "./scene/modelLoader.js";
-import "./scene/imageLoader.js"
+import "./scene/imageLoader.js";
 import "./scene/titleText.js";
-import "./scene/stars.js"; // Uncomment if needed
+import "./scene/stars.js"; // Optional
 import animate from "./animation/animate.js";
-// import './controls/orbitControls.js'; // Uncomment if needed
 
 function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
-  camera.position.y = t * 0.009;
-  camera.position.z = t * 0.001;
-  camera.position.x = t * -0.005;
-  camera.rotation.y = t * -0.0005;
+  // Scroll progress between 0 and 1
+  const scrollProgress =
+    window.scrollY / (document.body.scrollHeight - window.innerHeight);
 
+  // Adjust the movement as you like
+  camera.position.y = scrollProgress * 6;
+  camera.position.z = scrollProgress * -0.2;
+  camera.position.x = scrollProgress * -0.1;
+  camera.rotation.y = scrollProgress * -0.5;
+}
+
+animate(); // Starts the animation loop
+
+function LogLocation() {
   console.log(
     `Camera rotation: x=${camera.rotation.x.toFixed(
       2
@@ -26,6 +32,7 @@ function moveCamera() {
     )}, y=${camera.position.y.toFixed(2)}, z=${camera.position.z.toFixed(2)}`
   );
 }
-document.body.onscroll = moveCamera;
+document.body.onscroll = LogLocation();
 
 animate();
+export { moveCamera };
