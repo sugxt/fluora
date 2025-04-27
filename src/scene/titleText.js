@@ -6,7 +6,6 @@ import { FontLoader } from "three/examples/jsm/Addons.js";
 const loader = new FontLoader();
 
 loader.load("/src/assets/fonts/BoldFloral.json", function (font) {
-  console.log(font);
   const textGeometry = new TextGeometry("Fluora", {
     font: font,
     size: 1,
@@ -14,10 +13,9 @@ loader.load("/src/assets/fonts/BoldFloral.json", function (font) {
   });
 
   const textMaterial = new THREE.MeshStandardMaterial({
-    color: 0xFFC0CB,
-    emissive: 0xFFC0CB,
+    color: 0xffc0cb,
+    emissive: 0xffc0cb,
     emissiveIntensity: 0.5,
-    emissiveColor: 0xFF69B4,
   });
 
   const textMesh = new THREE.Mesh(textGeometry, textMaterial);
