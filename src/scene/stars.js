@@ -5,9 +5,6 @@ import { scene } from "./createScene.js";
 const leaves = [];
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  const star = new THREE.Mesh(geometry, material);
 
   const leafShape = new THREE.Shape();
 
@@ -42,9 +39,9 @@ function addStar() {
   // Add random rotation speeds for each axis
   leafMesh.userData = {
     rotationSpeed: {
-      x: THREE.MathUtils.randFloatSpread(0.005), // Very slow random speed
-      y: THREE.MathUtils.randFloatSpread(0.005), // Very slow random speed
-      z: THREE.MathUtils.randFloatSpread(0.005), // Very slow random speed
+      x: THREE.MathUtils.randFloatSpread(0.005),
+      y: THREE.MathUtils.randFloatSpread(0.005),
+      z: THREE.MathUtils.randFloatSpread(0.005),
     },
   };
 
