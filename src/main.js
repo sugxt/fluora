@@ -16,6 +16,7 @@ function moveCamera() {
   camera.position.z = scrollProgress * -0.2;
   camera.position.x = scrollProgress * -0.1;
   camera.rotation.y = scrollProgress * -0.5;
+  
 }
 
 animate(); // Starts the animation loop
