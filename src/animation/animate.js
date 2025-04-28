@@ -1,10 +1,10 @@
 import { renderer, scene, camera } from "../scene/createScene.js";
 import { moveCamera } from "../main.js";
 import { animateLeaves } from "../scene/stars.js";
-import { planeOne, planeTwo, planeThree } from "../scene/imageLoader.js";
+import { planeOne, planeTwo, planeThree, planeFour } from "../scene/imageLoader.js";
 
 // Collect all planes you want to sway
-const swayingPlanes = [planeOne, planeTwo, planeThree];
+const swayingPlanes = [planeOne, planeTwo, planeThree, planeFour];
 
 function animate() {
   requestAnimationFrame(animate);
