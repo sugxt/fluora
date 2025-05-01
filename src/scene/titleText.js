@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 import { scene } from "./createScene.js";
 import { FontLoader } from "three/examples/jsm/Addons.js";
-import fontJSON from "../assets/fonts/BoldFloral.json";  // ✅ Correct import
+import fontJSON from "../assets/fonts/BoldFloral.json"; // ✅ Correct import
 
 const loader = new FontLoader();
 
@@ -21,7 +21,7 @@ const textMaterial = new THREE.MeshStandardMaterial({
   emissiveIntensity: 0.5,
 });
 
-const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+export const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
 textMesh.position.set(-2.4, 0, -7);
 scene.add(textMesh);
