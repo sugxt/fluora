@@ -48,7 +48,7 @@ function addStar() {
 }
 
 // Create the leaves
-Array(450).fill().forEach(addStar);
+Array(500).fill().forEach(addStar);
 
 // Animation function to be called in your animation loop
 export function animateLeaves() {

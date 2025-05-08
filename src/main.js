@@ -35,5 +35,7 @@ function LogLocation() {
 }
 document.body.onscroll = LogLocation();
 
+
+
 animate();
 export { moveCamera };

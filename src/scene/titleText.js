@@ -19,6 +19,7 @@ const textMaterial = new THREE.MeshStandardMaterial({
   color: 0xffc0cb,
   emissive: 0xffc0cb,
   emissiveIntensity: 0.5,
+  roughness: 0.28 ,
 });
 
 export const textMesh = new THREE.Mesh(textGeometry, textMaterial);

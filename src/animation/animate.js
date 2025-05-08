@@ -1,4 +1,4 @@
-import { renderer, scene, camera } from "../scene/createScene.js";
+import { renderer, scene, camera, composer } from "../scene/createScene.js";
 import { moveCamera } from "../main.js";
 import { animateLeaves } from "../scene/stars.js";
 import {
@@ -28,7 +28,7 @@ function animate() {
   });
   moveCamera(); // Move camera based on scroll progress
   animateLeaves(); // Animate the floating leaves
-  renderer.render(scene, camera);
+  composer.render();
 }
 
 export default animate;
